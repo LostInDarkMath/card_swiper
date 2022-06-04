@@ -95,6 +95,7 @@ class MoveIndexControllerEvent extends IndexControllerEventBase
 class IndexController extends ChangeNotifier {
   IndexControllerEventBase? event;
   int index = 0;
+
   Future move(int index, {bool animation = true}) {
     final e = event = MoveIndexControllerEvent(
       animation: animation,
@@ -102,6 +103,7 @@ class IndexController extends ChangeNotifier {
       oldIndex: this.index,
     );
     notifyListeners();
+    this.index = index; // TODO added by me
     return e.future;
   }
 
